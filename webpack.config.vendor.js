@@ -6,6 +6,8 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var extractCss = new ExtractTextPlugin("vendor.css");
 var OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
+var _assetsPath = path.join(__dirname, "assets");
+
 module.exports = {
     resolve: {
         extensions: [".js", ".ts"],
@@ -28,7 +30,9 @@ module.exports = {
             path.join(__dirname, "app", "vendor.ts"),
             "bootstrap/dist/css/bootstrap.css",
             "@angular/material/core/theming/prebuilt/deeppurple-amber.css",
-            path.join(__dirname, "assets", "css", "font-awesome.css"),
+            path.join(_assetsPath, "css", "font-awesome.css"),
+            path.join(_assetsPath, "semantic", "dist", "semantic.min.css"),
+            path.join(_assetsPath, "semantic", "dist", "semantic.min.js"),
         ],
     },
     plugins: [
