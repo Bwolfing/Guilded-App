@@ -1,7 +1,9 @@
+import "angular2-universal-polyfills/browser";
 import { enableProdMode } from '@angular/core';
 import { platformUniversalDynamic } from "angular2-universal";
 import { AppModule } from './app.module';
 import 'rxjs/add/operator/map';
+import "bootstrap";
 enableProdMode();
 
 const platform = platformUniversalDynamic();
