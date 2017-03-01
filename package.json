@@ -13,7 +13,7 @@
     "pack": "webpack --config webpack.config.js",
     "prestart": "npm run pack",
     "start": "concurrently \"webpack --watch\" \"nodemon server.js\"",
-    "pack-prod": "webpack --config webpack.config.vendor.js --env.prod && webpack --config webpack.config.js --env.prod",
+    "heroku-postbuild": "webpack --config webpack.config.vendor.js --env.prod && webpack --config webpack.config.js --env.prod",
     "start-prod": "nodemon server.js"
   },
   "engines": {
