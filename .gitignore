@@ -1,10 +1,15 @@
 # dependencies
 node_modules
+
 public
 !public/index.html
+
 npm-debug*.log
+
 assets/semantic/**
 !assets/semantic/dist
+!assets/semantic/dist/themes
+!assets/semantic/dist/themes/**
 !assets/semantic/dist/semantic.min.*
 
 
