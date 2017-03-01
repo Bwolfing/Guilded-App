@@ -1,0 +1,10 @@
+# dependencies
+/node_modules
+/public/main.js
+/public/vendor.js
+/public/*.svg
+/public/vendor.css
+
+#System Files
+.DS_Store
+Thumbs.db
