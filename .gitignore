@@ -1,9 +1,7 @@
 # dependencies
 /node_modules
-/public/main.js
-/public/vendor.js
-/public/*.svg
-/public/vendor.css
+/public
+!/public/index.html
 
 #System Files
 .DS_Store
