@@ -58,7 +58,6 @@
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.2.0",
     "sass-loader": "^6.0.2",
-    "semantic-ui": "2.1.8",
     "ts-loader": "^2.0.1",
     "typescript": "^2.2.1",
     "typings": "^2.1.0",
@@ -67,5 +66,7 @@
     "webpack-merge": "^3.0.0",
     "zone.js": "^0.6.12"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "semantic-ui": "^2.1.8"
+  }
 }

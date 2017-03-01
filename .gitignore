@@ -1,9 +1,12 @@
 # dependencies
-/node_modules
-/public
-!/public/index.html
+node_modules
+public
+!public/index.html
 npm-debug*.log
-/assets/semantic
+assets/semantic/**
+!assets/semantic/dist
+!assets/semantic/dist/semantic.min.*
+
 
 #System Files
 .DS_Store
