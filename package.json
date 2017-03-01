@@ -14,7 +14,7 @@
     "prestart": "npm run pack",
     "start": "concurrently \"webpack --watch\" \"nodemon server.js\"",
     "pack-prod": "webpack --config webpack.config.vendor.js --env.prod && webpack --config webpack.config.js --env.prod",
-    "start-prod": "npm run pack-prod && nodemon server.js"
+    "start-prod": "nodemon server.js"
   },
   "engines": {
     "node": "~6.2.1",
