@@ -8,7 +8,6 @@
     "url": "https://github.com/Bwolfing/Selama-Angular"
   },
   "scripts": {
-    "postinstall": "npm run pack-vendor",
     "pack-vendor": "webpack --config webpack.config.vendor.js",
     "pack": "webpack --config webpack.config.js",
     "prestart": "npm run pack",
