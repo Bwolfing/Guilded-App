@@ -1,8 +1,56 @@
 <div class="full height">
-    <nav-menu></nav-menu>
+    <sm-sidebar class="vertical left inverted menu main-menu" #sidebar>
+        <a sm-item class="ui brand" [routerLink]="['/home']">
+            Selama
+        </a>
+        <a sm-item [routerLinkActive]="['active']" [routerLink]="['/home']">
+            <span class="fa fa-home"></span> Home
+        </a>
+        <a sm-item [routerLinkActive]="['active']" [routerLink]="['/counter']">
+            <span class="fa fa-calculator"></span> Counter
+        </a>
+        <a sm-item [routerLinkActive]="['active']" [routerLink]="['/forums']">
+            <span class="fa fa-comment"></span> Forums
+        </a>
+        <a sm-item *ngIf="!isLoggedIn" [routerLinkActive]="['active']" [routerLink]="['/account/sign-in']">
+            <span class="fa fa-sign-in"></span> Sign in
+        </a>
+        <a sm-item *ngIf="!isLoggedIn" [routerLinkActive]="['active']" [routerLink]="['/account/register']">
+            <span class="fa fa-pencil-square-o"></span> Register
+        </a>
+        <a sm-item *ngIf="isLoggedIn" (click)="logOut()">
+            <span class="fa fa-sign-out"></span> Sign out
+        </a>
+    </sm-sidebar>
+    <sm-menu class="vertical left inverted pointing main-menu">
+        <a sm-item class="ui brand" [routerLink]="['/home']">
+            Selama
+        </a>
+        <a sm-item [routerLinkActive]="['active']" [routerLink]="['/home']">
+            <span class="fa fa-home"></span> Home
+        </a>
+        <a sm-item [routerLinkActive]="['active']" [routerLink]="['/counter']">
+            <span class="fa fa-calculator"></span> Counter
+        </a>
+        <a sm-item [routerLinkActive]="['active']" [routerLink]="['/forums']">
+            <span class="fa fa-comment"></span> Forums
+        </a>
+        <a sm-item *ngIf="!isLoggedIn" [routerLinkActive]="['active']" [routerLink]="['/account/sign-in']">
+            <span class="fa fa-sign-in"></span> Sign in
+        </a>
+        <a sm-item *ngIf="!isLoggedIn" [routerLinkActive]="['active']" [routerLink]="['/account/register']">
+            <span class="fa fa-pencil-square-o"></span> Register
+        </a>
+        <a sm-item *ngIf="isLoggedIn" (click)="logOut()">
+            <span class="fa fa-sign-out"></span> Sign out
+        </a>
+    </sm-menu>
     <div class="main-content">
         <div class="ui container fluid">
             <md-progress-bar color="primary" mode="determinate" value="0" class="loading-bar"></md-progress-bar>
+            <sm-button class="positive menu-show" (click)="sidebar.show({'transition': 'overlay'})">
+                Launch
+            </sm-button>
             <router-outlet></router-outlet>
         </div>
     </div>

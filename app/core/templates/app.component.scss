@@ -1,3 +1,5 @@
+@import "common-properties.scss";
+
 .loading-bar
 {
     position: fixed;
@@ -13,18 +15,55 @@
     }
 }
 
+$menu-width: 200px;
+
+.main-menu
+{
+    &.sidebar.overlay.visible
+    {
+        width: $menu-width;
+    }
+
+    .item
+    {
+        .fa,
+        .glyphicon
+        {
+            margin-right: 10px;
+        }
+
+        &.ui.brand
+        {
+            text-align: center;
+            font-size: 24px;
+        }
+    }
+}
+
+
+
 .full.height
 {
     display: flex;
     height: 100%;
 
-    nav-menu
-    {
-        $menu-width: 200px;
-        min-width: $menu-width;
-        max-width: $menu-width;
+    sm-menu
+    {   
+        .main-menu
+        {
+            min-width: $menu-width;
+            max-width: $menu-width;
+            height: 100%;
 
-        @media(max-width: 992px)
+            @media(max-width: $small-monitor-breakpoint - 1)
+            {
+                display: none;
+            }
+        }
+    }
+    .menu-show
+    {
+        @media(min-width: $small-monitor-breakpoint)
         {
             display: none;
         }

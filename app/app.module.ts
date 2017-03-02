@@ -11,7 +11,6 @@ import { ForumsAppModule } from "./forums/app.module";
 import { AccountModule } from "./account/app.module";
 
 import { AppComponent } from "./app.component"
-import { NavMenuComponent } from "./core/navmenu.component";
 
 @NgModule({
     bootstrap: [
@@ -19,7 +18,6 @@ import { NavMenuComponent } from "./core/navmenu.component";
     ],
     declarations: [
         AppComponent,
-        NavMenuComponent,
     ],
     providers: [
         ProgressBarService,
