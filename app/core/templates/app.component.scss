@@ -23,6 +23,11 @@
         $menu-width: 200px;
         min-width: $menu-width;
         max-width: $menu-width;
+
+        @media(max-width: 992px)
+        {
+            display: none;
+        }
     }
     .main-content
     {

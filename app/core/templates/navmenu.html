@@ -1,4 +1,7 @@
-<sm-menu class="vertical pointing inverted left">
+<sm-button class="positive" (click)="sidebar.show({'transition': 'overlay'})">
+    Launch
+</sm-button>
+<sm-sidebar class="vertical left pointing inverted menu" #sidebar>
     <a sm-item class="ui brand" [routerLink]="['/home']">
         Selama
     </a>
@@ -20,4 +23,4 @@
     <a sm-item *ngIf="isLoggedIn" (click)="logOut()">
         <span class="fa fa-sign-out"></span> Sign out
     </a>
-</sm-menu>
+</sm-sidebar>

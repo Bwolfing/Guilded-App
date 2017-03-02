@@ -10,7 +10,7 @@ var _assetsPath = path.join(__dirname, "assets");
 
 module.exports = {
     resolve: {
-        extensions: [".js", ".ts"],
+        extensions: [".js"],
     },
     module: {
         loaders: [
