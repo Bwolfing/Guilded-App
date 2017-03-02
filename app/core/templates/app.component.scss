@@ -1,5 +1,10 @@
 @import "common-properties.scss";
 
+html
+{
+    overflow: hidden;
+}
+
 .loading-bar
 {
     position: fixed;
@@ -53,18 +58,25 @@ $menu-width: 200px;
     }
 }
 
-
+app
+{
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow-y: auto;
+}
 
 .full.height
 {
-    position: absolute;
     display: flex;
-    height: 100%;
+    min-height: 100%;
 
     sm-menu
     {   
         .main.menu
         {
+            position: relative;
             min-width: $menu-width;
             max-width: $menu-width;
             height: 100%;
@@ -88,7 +100,6 @@ $menu-width: 200px;
         flex: 1 1 auto;
         background: #fff;
         padding: 15px 0 15px 10px;
-        overflow: auto;
 
         @media(max-width: $mobile-breakpoint)
         {
