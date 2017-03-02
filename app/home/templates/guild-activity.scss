@@ -1,7 +1,7 @@
 .guild-activity-container
 {
-    $guild-activity-min-height: 100px; // min height of the md-spinner
     $guild-activity-max-height: 350px;
+    $guild-activity-min-height: $guild-activity-max-height; // min height of the md-spinner
     position: relative;
     min-height: $guild-activity-min-height;
     max-height: $guild-activity-max-height;

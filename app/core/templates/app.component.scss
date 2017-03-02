@@ -60,7 +60,6 @@ $menu-width: 200px;
     position: absolute;
     display: flex;
     height: 100%;
-    overflow: auto;
 
     sm-menu
     {   
@@ -89,6 +88,7 @@ $menu-width: 200px;
         flex: 1 1 auto;
         background: #fff;
         padding: 15px 0 15px 10px;
+        overflow: auto;
 
         @media(max-width: $mobile-breakpoint)
         {
