@@ -1,5 +1,5 @@
 <div class="full height">
-    <sm-sidebar class="vertical left inverted menu main" #sidebar>
+    <sm-sidebar class="vertical left inverted menu main" (click)="sidebar.hide()" #sidebar>
         <a sm-item [routerLinkActive]="['active']" [routerLink]="['/home']">
             <span class="fa fa-home"></span> Home
         </a>

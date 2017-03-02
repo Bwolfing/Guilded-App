@@ -1,6 +1,8 @@
 import { Component, ViewChild, AfterViewChecked, ViewEncapsulation } from "@angular/core";
 import { MdProgressBar } from "@angular/material";
 import { Router, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from "@angular/router";
+import * as $ from "jquery";
+import { SemanticSidebarComponent } from "ng-semantic";
 
 import { ProgressBarService } from "./core/progress-bar.service";
 import { AuthService } from "./core/auth.service";
@@ -16,6 +18,9 @@ export class AppComponent implements AfterViewChecked
     @ViewChild(MdProgressBar)
     progressBar: MdProgressBar;
 
+    @ViewChild(SemanticSidebarComponent)
+    sidebar: SemanticSidebarComponent;
+
     constructor(private authService: AuthService,
         private router: Router,
         private progressBarService: ProgressBarService)
@@ -25,6 +30,7 @@ export class AppComponent implements AfterViewChecked
     ngAfterViewChecked()
     {
         this.progressBarService.setProgressBar(this.progressBar);
+        $(".sidebar.menu .item").click(() => this.sidebar.hide());
     }
 
     public get isLoggedIn(): boolean
