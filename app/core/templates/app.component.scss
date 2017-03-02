@@ -19,9 +19,21 @@ $menu-width: 200px;
 
 .main.menu
 {
-    &.sidebar.overlay.visible
+    &.sidebar
     {
-        width: $menu-width;
+        &.visible,
+        &.animating
+        {
+            width: $menu-width;
+        }
+        &.visible
+        {
+            &.left.ui ~ .pusher
+            {
+                -webkit-transform: translate3d($menu-width, 0, 0);
+                transform: translate3d($menu-width, 0, 0);
+            }
+        }
     }
 
     .item
@@ -45,8 +57,10 @@ $menu-width: 200px;
 
 .full.height
 {
+    position: absolute;
     display: flex;
     height: 100%;
+    overflow: auto;
 
     sm-menu
     {   
@@ -55,6 +69,7 @@ $menu-width: 200px;
             min-width: $menu-width;
             max-width: $menu-width;
             height: 100%;
+            border-radius: 0;
 
             @media(max-width: $mobile-breakpoint)
             {
