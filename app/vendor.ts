@@ -12,5 +12,6 @@ import "angular2-universal-polyfills";
 import "bootstrap";
 import "es6-shim";
 import "es6-promise";
-import "jquery";
 import "hammerjs";
+import "jquery";
+import "ng-semantic";

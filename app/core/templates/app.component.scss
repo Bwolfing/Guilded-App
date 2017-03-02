@@ -19,3 +19,19 @@
         display: none;
     }
 }
+
+.full.height
+{
+    display: flex;
+    height: 100%;
+
+    nav-menu
+    {
+        width: 250px;
+    }
+    .main-content
+    {
+        flex: 1 1 auto;
+        background: #fff;
+    }
+}

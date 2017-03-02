@@ -1,25 +1,23 @@
-<div class="sidebar">
-    <div class="ui vertical pointing sticky inverted menu">
-        <a class="item ui brand" [routerLink]="['/home']">
-            Selama
-        </a>
-        <a class="item" [routerLinkActive]="['active']" [routerLink]="['/home']">
-            <span class="fa fa-home"></span> Home
-        </a>
-        <a class="item" [routerLinkActive]="['active']" [routerLink]="['/counter']">
-            <span class="fa fa-calculator"></span> Counter
-        </a>
-        <a class="item" [routerLinkActive]="['active']" [routerLink]="['/forums']">
-            <span class="fa fa-comment"></span> Forums
-        </a>
-        <a class="item" *ngIf="!isLoggedIn" [routerLinkActive]="['active']" [routerLink]="['/account/sign-in']">
-            <span class="fa fa-sign-in"></span> Sign in
-        </a>
-        <a class="item" *ngIf="!isLoggedIn" [routerLinkActive]="['active']" [routerLink]="['/account/register']">
-            <span class="fa fa-pencil-square-o"></span> Register
-        </a>
-        <a class="item" *ngIf="isLoggedIn" (click)="logOut()">
-            <span class="fa fa-sign-out"></span> Sign out
-        </a>
-    </div>
-</div>
+<sm-menu class="vertical pointing inverted left">
+    <a sm-item class="ui brand" [routerLink]="['/home']">
+        Selama
+    </a>
+    <a sm-item [routerLinkActive]="['active']" [routerLink]="['/home']">
+        <span class="fa fa-home"></span> Home
+    </a>
+    <a sm-item [routerLinkActive]="['active']" [routerLink]="['/counter']">
+        <span class="fa fa-calculator"></span> Counter
+    </a>
+    <a sm-item [routerLinkActive]="['active']" [routerLink]="['/forums']">
+        <span class="fa fa-comment"></span> Forums
+    </a>
+    <a sm-item *ngIf="!isLoggedIn" [routerLinkActive]="['active']" [routerLink]="['/account/sign-in']">
+        <span class="fa fa-sign-in"></span> Sign in
+    </a>
+    <a sm-item *ngIf="!isLoggedIn" [routerLinkActive]="['active']" [routerLink]="['/account/register']">
+        <span class="fa fa-pencil-square-o"></span> Register
+    </a>
+    <a sm-item *ngIf="isLoggedIn" (click)="logOut()">
+        <span class="fa fa-sign-out"></span> Sign out
+    </a>
+</sm-menu>

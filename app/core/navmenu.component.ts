@@ -1,10 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { AuthService } from "./auth.service";
 
 @Component({
     selector: "nav-menu",
+    encapsulation: ViewEncapsulation.None,
     template: require("./templates/navmenu.html"),
     styles: [require("./templates/navmenu.scss")]
 })
