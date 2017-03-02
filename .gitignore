@@ -10,7 +10,8 @@ assets/semantic/**
 !assets/semantic/dist
 !assets/semantic/dist/themes
 !assets/semantic/dist/themes/**
-!assets/semantic/dist/semantic.min.*
+!assets/semantic/dist/semantic.min.css
+!assets/semantic/dist/semantic.js
 
 
 #System Files
