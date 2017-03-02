@@ -17,7 +17,7 @@
 
 $menu-width: 200px;
 
-.main-menu
+.main.menu
 {
     &.sidebar.overlay.visible
     {
@@ -35,7 +35,8 @@ $menu-width: 200px;
         &.ui.brand
         {
             text-align: center;
-            font-size: 24px;
+            font-size: 20px;
+            font-weight: bold;
         }
     }
 }
@@ -49,19 +50,19 @@ $menu-width: 200px;
 
     sm-menu
     {   
-        .main-menu
+        .main.menu
         {
             min-width: $menu-width;
             max-width: $menu-width;
             height: 100%;
 
-            @media(max-width: $small-monitor-breakpoint - 1)
+            @media(max-width: $mobile-breakpoint)
             {
                 display: none;
             }
         }
     }
-    .menu-show
+    .menu.fixed.top
     {
         @media(min-width: $small-monitor-breakpoint)
         {
@@ -73,5 +74,10 @@ $menu-width: 200px;
         flex: 1 1 auto;
         background: #fff;
         padding: 15px 0 15px 10px;
+
+        @media(max-width: $mobile-breakpoint)
+        {
+            padding-top: 59px;
+        }
     }
 }

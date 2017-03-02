@@ -1,8 +1,5 @@
 <div class="full height">
-    <sm-sidebar class="vertical left inverted menu main-menu" #sidebar>
-        <a sm-item class="ui brand" [routerLink]="['/home']">
-            Selama
-        </a>
+    <sm-sidebar class="vertical left inverted menu main" #sidebar>
         <a sm-item [routerLinkActive]="['active']" [routerLink]="['/home']">
             <span class="fa fa-home"></span> Home
         </a>
@@ -22,7 +19,15 @@
             <span class="fa fa-sign-out"></span> Sign out
         </a>
     </sm-sidebar>
-    <sm-menu class="vertical left inverted pointing main-menu">
+    <sm-menu class="inverted fixed top large mobile-menu">
+        <a sm-item (click)="sidebar.show({ 'transition': 'overlay' })">
+            <span class="fa fa-bars"></span>
+        </a>
+        <a sm-item class="ui brand" [routerLink]="['/home']">
+            Selama
+        </a>
+    </sm-menu>
+    <sm-menu class="vertical left inverted pointing main">
         <a sm-item class="ui brand" [routerLink]="['/home']">
             Selama
         </a>
@@ -48,9 +53,6 @@
     <div class="main-content">
         <div class="ui container fluid">
             <md-progress-bar color="primary" mode="determinate" value="0" class="loading-bar"></md-progress-bar>
-            <sm-button class="positive menu-show" (click)="sidebar.show({'transition': 'overlay'})">
-                Launch
-            </sm-button>
             <router-outlet></router-outlet>
         </div>
     </div>
