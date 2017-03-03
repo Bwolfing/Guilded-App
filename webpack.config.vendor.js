@@ -47,6 +47,7 @@ module.exports = {
             "hammerjs",
             "jquery",
             "ng-semantic",
+            "ng2-validation",
             path.join(_assetsPath, "semantic", "dist", "semantic.min.css"),
             path.join(_assetsPath, "semantic", "dist", "semantic.js"),
             path.join(_assetsPath, "css", "font-awesome.css"),

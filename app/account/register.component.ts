@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { CustomValidators } from "ng2-validation";
 
 import { AuthService, RegisterUserModel } from "../core/auth.service";
 import { ProgressBarService } from "../core/progress-bar.service";
@@ -49,6 +50,7 @@ export class RegisterComponent implements OnInit
             Email: [
                 this.user.Email, [
                     Validators.required,
+                    CustomValidators.email
                 ],
             ],
             Password: [
@@ -57,13 +59,15 @@ export class RegisterComponent implements OnInit
                     Validators.minLength(6),
                 ]
             ],
-            ConfirmPassword: [
-                this.user.ConfirmPassword, [
-                    Validators.required,
-                    Validators.minLength(6),
-                ]
-            ],
         });
+        this.registerForm.addControl("ConfirmPassword", new FormControl(
+            "",
+            [
+                Validators.required,
+                Validators.minLength(6),
+                CustomValidators.equalTo(this.registerForm.controls.Password)
+            ]
+        ));
     }
     private onFormValueChanges(data?: any)
     {
@@ -136,6 +140,7 @@ class RegisterErrors
         },
         Email: {
             required: "Email is required",
+            email: "Must be a valid email address format"
         },
         Password: {
             required: "Password is required",
@@ -144,6 +149,7 @@ class RegisterErrors
         ConfirmPassword: {
             required: "Confirm password is required",
             minlength: "Confirm password must contain at least 6 characters",
+            equalTo: "Does not match password",
         },
     }
 

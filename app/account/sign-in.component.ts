@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { CustomValidators } from "ng2-validation";
 
 import { AuthService, SignInModel } from "../core/auth.service";
 import { ProgressBarService } from "../core/progress-bar.service";
@@ -41,8 +42,10 @@ export class SignInComponent implements OnInit
     {
         this.signInForm = this.formBuilder.group({
             Email: [
-                this.signInModel.Email,
-                Validators.required
+                this.signInModel.Email, [
+                    Validators.required,
+                    CustomValidators.email,
+                ]
             ],
             Password: [
                 this.signInModel.Password,
@@ -114,6 +117,7 @@ class SignInErrors
     static ErrorMessages: Object = {
         Email: {
             required: "Email is required",
+            email: "Must be a valid email address format"
         },
         Password: {
             required: "Password is required",
