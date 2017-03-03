@@ -1,65 +1,71 @@
 <h2>
     Register
 </h2>
-<div class="padded col-xs-12 col-sm-6 col-md-6 col-lg-6">
-    <h4>
-        Create a new account
-    </h4>
-    <form class="form-horizontal" (ngSubmit)="register()">
-        <div class="form-gorup text-danger" [ngClass]="{ 'hidden': !formErrors.Model.length }">
-            <div *ngFor="let error of formErrors.Model">
-                {{ error }}
-            </div>
-        </div>
-        <div class="form-group">
-            <md-input-container>
-                <input md-input placeholder="Username" required [(ngModel)]="user.Username" name="Username" [disabled]="isLoading" />
-            </md-input-container>
-            <div class="text-danger" [ngClass]="{ 'hidden': !formErrors.Username.length }">
-                <div *ngFor="let error of formErrors.Username">
-                    {{ error }}
+<sm-loader class="inverted" text="Registering..." [complete]="!isLoading"></sm-loader>
+<div class="ui grid stackable divided two column">
+    <div class="column">
+        <h4>
+            Create a new account
+        </h4>
+        <form class="ui form" [ngClass]="{ 'error': !isFormErrorFree }" (ngSubmit)="register()" [formGroup]="registerForm">
+            <div class="field" *ngIf="formErrors.Model && formErrors.Model.length">
+                <div class="ui error message">
+                    <ul class="list">
+                        <li *ngFor="let error of formErrors.Model">
+                            {{ error }}
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <md-input-container>
-                <input md-input placeholder="Email" type="email" required [(ngModel)]="user.Email" name="Email" [disabled]="isLoading" />
-            </md-input-container>
-            <div class="text-danger" [ngClass]="{ 'hidden': !formErrors.Email.length }">
-                <div *ngFor="let error of formErrors.Email">
-                    {{ error }}
+            <div class="field">
+                <sm-input label="Username" icon="user" class="left" [control]="registerForm.controls.Username" required></sm-input>
+                <div class="ui label basic warning pointing" *ngIf="formErrors.Username && formErrors.Username.length">
+                    <ul>
+                        <li *ngFor="let error of formErrors.Username">
+                            {{ error }}
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <md-input-container>
-                <input md-input placeholder="Password" type="password" required [(ngModel)]="user.Password" name="Password" [disabled]="isLoading" />
-            </md-input-container>
-            <div class="text-danger" [ngClass]="{ 'hidden': !formErrors.Password.length }">
-                <div *ngFor="let error of formErrors.Password">
-                    {{ error }}
+            <div class="field">
+                <sm-input label="Email" icon="mail" class="left" [control]="registerForm.controls.Email" type="email" required></sm-input>
+                <div class="ui label basic warning pointing" *ngIf="formErrors.Email && formErrors.Email.length">
+                    <ul>
+                        <li *ngFor="let error of formErrors.Email">
+                            {{ error }}
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <md-input-container>
-                <input md-input placeholder="Confirm Password" type="password" required [(ngModel)]="user.ConfirmPassword" name="ConfirmPassword" [disabled]="isLoading" />
-            </md-input-container>
-            <div class="text-danger" [ngClass]="{ 'hidden': !formErrors.ConfirmPassword.length }">
-                <div *ngFor="let error of formErrors.ConfirmPassword">
-                    {{ error }}
+            <div class="field">
+                <sm-input label="Password" icon="asterisk" class="left" [control]="registerForm.controls.Password" type="password" required></sm-input>
+                <div class="ui label basic warning pointing" *ngIf="formErrors.Email && formErrors.Password.length">
+                    <ul>
+                        <li *ngFor="let error of formErrors.Password">
+                            {{ error }}
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <button type="submit" md-raised-button [disabled]="isLoading">
+            <div class="field">
+                <sm-input label="Confirm password" icon="asterisk" class="left" name="ConfirmPassword" [control]="registerForm.controls.ConfirmPassword" type="password" required></sm-input>
+                <div class="ui label basic warning pointing" *ngIf="formErrors.ConfirmPassword && formErrors.ConfirmPassword.length">
+                    <ul>
+                        <li *ngFor="let error of formErrors.ConfirmPassword">
+                            {{ error }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <sm-button type="submit" class="primary" [disabled]="isLoading || !registerForm.valid">
                 Register
-            </button>
-        </div>
-    </form>
-</div>
-<div class="padded col-xs-12 col-sm-6 col-md-6 col-lg-6">
-    <h4>
-        Register with another service
-    </h4>
+            </sm-button>
+        </form>
+    </div>
+    <div class="column">
+        <h4>
+            Register with another service
+        </h4>
+        Things like OAuth go here
+    </div>
 </div>

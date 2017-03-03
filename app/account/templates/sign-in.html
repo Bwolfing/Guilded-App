@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="field">
-                <sm-input label="E-mail*" class="left" [control]="signInForm.controls.Email" required icon="mail"></sm-input>
+                <sm-input label="E-mail*" class="left" [control]="signInForm.controls.Email" type="email" required icon="mail"></sm-input>
                 <div class="ui pointing warning basic label" *ngIf="formErrors.Email && formErrors.Email.length">
                     <ul>
                         <li *ngFor="let error of formErrors.Email">

@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 
 import { AuthService, RegisterUserModel } from "../core/auth.service";
@@ -11,16 +12,85 @@ import { ProgressBarService } from "../core/progress-bar.service";
         require("./templates/register.scss"),
     ],
 })
-export class RegisterComponent
+export class RegisterComponent implements OnInit
 {
+    registerForm: FormGroup;
+    user: RegisterUserModel = new RegisterUserModel();
     formErrors: RegisterErrors = new RegisterErrors();
     isLoading: boolean = false;
-    user: RegisterUserModel = new RegisterUserModel();
 
-    constructor(private authService: AuthService, private progressBar: ProgressBarService,
-        private router: Router
-    )
+    public get isFormErrorFree(): boolean
     {
+        return this.registerForm.valid && this.formErrors.hasNoErrors;
+    }
+
+    constructor(private authService: AuthService,
+        private progressBar: ProgressBarService,
+        private router: Router,
+        private formBuilder: FormBuilder)
+    {
+    }
+
+    public ngOnInit()
+    {
+        this.buildForm();
+        this.registerForm.valueChanges.subscribe(data => this.onFormValueChanges(data));
+        this.onFormValueChanges();
+    }
+    private buildForm()
+    {
+        this.registerForm = this.formBuilder.group({
+            Username: [
+                this.user.Username, [
+                    Validators.required,
+                    Validators.minLength(5),
+                ],
+            ],
+            Email: [
+                this.user.Email, [
+                    Validators.required,
+                ],
+            ],
+            Password: [
+                this.user.Password, [
+                    Validators.required,
+                    Validators.minLength(6),
+                ]
+            ],
+            ConfirmPassword: [
+                this.user.ConfirmPassword, [
+                    Validators.required,
+                    Validators.minLength(6),
+                ]
+            ],
+        });
+    }
+    private onFormValueChanges(data?: any)
+    {
+        if (!this.registerForm)
+        {
+            return;
+        }
+
+        const form = this.registerForm;
+        for (const field in this.formErrors)
+        {
+            if (["Username", "Email", "Password", "ConfirmPassword"].indexOf(field) < 0)
+            {
+                continue;
+            }
+
+            this.formErrors[field] = [];
+            const control = form.get(field);
+            if (control && control.dirty && !control.valid)
+            {
+                const messages = RegisterErrors.ErrorMessages[field];
+                for (const key in control.errors)
+                {
+                    this.formErrors[field].push(messages[key]);
+                }
+            }
+        }
     }
 
     public register(): void
@@ -29,6 +99,7 @@ export class RegisterComponent
         {
             this.isLoading = true;
             this.progressBar.start();
+            this.formErrors.clearErrors();
             this.authService.register(this.user)
                 .finally(() =>
                 {
@@ -49,14 +120,52 @@ export class RegisterComponent
         this.formErrors.Email = errors["Email"] || [];
         this.formErrors.Password = errors["Password"] || [];
         this.formErrors.ConfirmPassword = errors["ConfirmPassword"] || [];
+        if (this.formErrors.hasNoErrors)
+        {
+            this.formErrors.Model = ["An error occurred. Please try again"];
+        }
     }
 }
 
 class RegisterErrors
 {
+    static ErrorMessages: Object = {
+        Username: {
+            required: "Username is required",
+            minlength: "Username must contain at least 5 characters",
+        },
+        Email: {
+            required: "Email is required",
+        },
+        Password: {
+            required: "Password is required",
+            minlength: "Password must contain at least 6 characters",
+        },
+        ConfirmPassword: {
+            required: "Confirm password is required",
+            minlength: "Confirm password must contain at least 6 characters",
+        },
+    }
+
     Model: string[] = [];
     Username: string[] = [];
     Email: string[] = [];
     Password: string[] = [];
     ConfirmPassword: string[] = [];
+
+    public get hasNoErrors(): boolean
+    {
+        return !this.Model.length && !this.Username.length &&
+            !this.Email.length && !this.Password.length &&
+            !this.ConfirmPassword.length;
+    }
+
+    public clearErrors(): void
+    {
+        this.Model = [];
+        this.Username = [];
+        this.Email = [];
+        this.Password = [];
+        this.ConfirmPassword = [];
+    }
 }

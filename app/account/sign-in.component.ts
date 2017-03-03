@@ -102,6 +102,10 @@ export class SignInComponent implements OnInit
         this.formErrors.Model = errors[""] || [];
         this.formErrors.Email = errors.Email || [];
         this.formErrors.Password = errors.Password || [];
+        if (this.formErrors.hasNoErrors)
+        {
+            this.formErrors.Model = ["An error occurred. Please try again"];
+        }
     }
 }
 
@@ -119,13 +123,6 @@ class SignInErrors
     Model: string[] = [];
     Email: string[] = [];
     Password: string[] = [];
-
-    constructor()
-    {
-        this.Model = [];
-        this.Email = [];
-        this.Password = [];
-    }
 
     public get hasNoErrors()
     {
