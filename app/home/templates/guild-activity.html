@@ -7,9 +7,7 @@
 </div>
 <div class="guild-activity-container">
     <div class="guild-activity-scroll" [ngClass]="{ 'disable-scroll': isLoading }">
-        <div class="md-spinner-wrapper" *ngIf="isLoading">
-            <md-spinner mode="indeterminate"></md-spinner>
-        </div>
+        <sm-loader [complete]="!isLoading" text="Loading..."></sm-loader>
         <table class='table table-striped'>
             <tbody *ngIf="guildActivity.length > 0">
                 <tr *ngFor="let activity of guildActivity">

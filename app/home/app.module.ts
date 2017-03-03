@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { MaterialModule } from "@angular/material";
 import { UniversalModule } from "angular2-universal";
+import { NgSemanticModule } from "ng-semantic"
 
 import { RoutingModule } from "./app.routing";
 
@@ -12,6 +13,7 @@ import { HomeComponent } from "./home.component";
     imports: [
         UniversalModule,
         MaterialModule.forRoot(),
+        NgSemanticModule,
         RoutingModule,
     ],
     declarations: [
