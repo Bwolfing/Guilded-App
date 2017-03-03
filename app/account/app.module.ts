@@ -1,7 +1,8 @@
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "@angular/material";
 import { UniversalModule } from "angular2-universal";
+import { NgSemanticModule } from "ng-semantic";
 
 import { AccountRoutingModule } from "./app.routing";
 import { AccountManagerModule } from "./manage/app.module";
@@ -14,9 +15,11 @@ import { SignInComponent } from "./sign-in.component";
     imports: [
         UniversalModule,
         MaterialModule.forRoot(),
+        NgSemanticModule,
         AccountRoutingModule,
         AccountManagerModule,
         FormsModule,
+        ReactiveFormsModule,
     ],
     declarations: [
         RegisterComponent,

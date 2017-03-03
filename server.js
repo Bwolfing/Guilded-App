@@ -27,7 +27,21 @@ app.get("/api/guild-activity", function(request, response)
     setTimeout(function() {
         response.json([]);
     }, 5000);
-})
+});
+app.post("/api/account/sign-in", function(request, response)
+{
+    setTimeout(function() {
+        response.statusCode = 500;
+        response.json([]);
+    }, 5000);
+});
+app.post("/api/account/register", function(request, response)
+{
+    setTimeout(function() {
+        response.statusCode = 500;
+        response.json([]);
+    }, 5000);
+});
 
 //For avoidong Heroku $PORT error
 app.get('/*', function (request, response) {

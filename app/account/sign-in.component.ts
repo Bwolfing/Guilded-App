@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 
 import { AuthService, SignInModel } from "../core/auth.service";
@@ -13,7 +14,11 @@ import { ProgressBarService } from "../core/progress-bar.service";
 })
 export class SignInComponent
 {
-    user: SignInModel = new SignInModel();
+    signInForm = new FormGroup({
+        Email: new FormControl(),
+        Password: new FormControl(),
+        RememberMe: new FormControl(),
+    });
     isLoading: boolean = false;
     formErrors: SignInErrors = new SignInErrors();
 
@@ -27,7 +32,7 @@ export class SignInComponent
         {
             this.isLoading = true;
             this.progressBar.start();
-            this.authService.logIn(this.user)
+            this.authService.logIn(this.userCredentials)
                 .finally(() => 
                 {
                     this.isLoading = false;
@@ -44,6 +49,14 @@ export class SignInComponent
         this.formErrors.Model = errors[""] || [];
         this.formErrors.Username = errors.Username || [];
         this.formErrors.Password = errors.Password || [];
+    }
+    private get userCredentials(): SignInModel
+    {
+        return {
+            Email: this.signInForm.controls.Email.value,
+            Password: this.signInForm.controls.Password.value,
+            RememberMe: this.signInForm.controls.RememberMe.value
+        };
     }
 }
 

@@ -16,6 +16,7 @@ module.exports = {
         loaders: [
             { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf)(\?|$)/, loader: "url-loader?limit=100000", },
             { test: /\.css(\?|$)/, loader: extractCss.extract(["css-loader",]) },
+            { test: /\.scss$/, loaders: extractCss.extract(["raw-loader", "sass-loader"]) },
         ],
         // Silences warning, found answer here: http://bit.ly/2mBnmg2
         exprContextCritical: false,
@@ -41,15 +42,15 @@ module.exports = {
             "angular2-universal",
             "angular2-universal-polyfills",
             "bootstrap",
-            "bootstrap/dist/css/bootstrap.css",
             "es6-shim",
             "es6-promise",
             "hammerjs",
             "jquery",
             "ng-semantic",
-            path.join(_assetsPath, "css", "font-awesome.css"),
             path.join(_assetsPath, "semantic", "dist", "semantic.min.css"),
             path.join(_assetsPath, "semantic", "dist", "semantic.js"),
+            path.join(_assetsPath, "css", "font-awesome.css"),
+            path.join(_assetsPath, "css", "semantic-ui-override.scss"),
         ],
     },
     plugins: [

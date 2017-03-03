@@ -33,7 +33,7 @@ export class AuthService
     public logIn(user: SignInModel)
     {
         let logInObservable = this.http.post(this.logInUrl, user).share();
-        return logInObservable.do(result => this.storeAccessToken(result));
+        return logInObservable.do(result => this.storeAccessToken(result), err => console.error(err));
     }
     private storeAccessToken(result: Response)
     {
@@ -44,7 +44,7 @@ export class AuthService
     public register(user: RegisterUserModel)
     {
         let registerObservable = this.http.post(this.registerUrl, user).share();
-        return registerObservable.do(result => this.storeAccessToken(result));
+        return registerObservable.do(result => this.storeAccessToken(result), err => console.error(err));
     }
 
     public logOut()

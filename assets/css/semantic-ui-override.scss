@@ -1,0 +1,9 @@
+i.icon.battlenet
+{
+    font-family: font-awesome-custom;
+
+    &::before
+    {
+        content: "\e900";
+    }
+}
