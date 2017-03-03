@@ -32,14 +32,14 @@ app.post("/api/account/sign-in", function(request, response)
 {
     setTimeout(function() {
         response.statusCode = 500;
-        response.json([]);
+        response.json({ "": ["Invalid email or password", "other error"], "Email": ["Not a valid email address"], "Password": ["Test"]});
     }, 5000);
 });
 app.post("/api/account/register", function(request, response)
 {
     setTimeout(function() {
         response.statusCode = 500;
-        response.json([]);
+        response.json({ "": ["An error occurred"], "Username": ["That username is unavailable"], });
     }, 5000);
 });
 
