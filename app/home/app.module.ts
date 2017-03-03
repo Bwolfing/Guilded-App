@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-import { MaterialModule } from "@angular/material";
 import { UniversalModule } from "angular2-universal";
 import { NgSemanticModule } from "ng-semantic"
 
@@ -12,7 +11,6 @@ import { HomeComponent } from "./home.component";
 @NgModule({
     imports: [
         UniversalModule,
-        MaterialModule.forRoot(),
         NgSemanticModule,
         RoutingModule,
     ],
@@ -20,9 +18,6 @@ import { HomeComponent } from "./home.component";
         CounterComponent,
         GuildActivityComponent,
         HomeComponent,
-    ],
-    exports: [
-        MaterialModule,
     ],
 })
 export class HomeAppModule

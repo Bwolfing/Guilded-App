@@ -5,7 +5,6 @@ import { MetaModule, MetaService } from "@nglibs/meta";
 import { NgSemanticModule } from "ng-semantic";
 
 import { AuthModule } from "./core/auth.module";
-import { ProgressBarService } from "./core/progress-bar.service";
 
 import { HomeAppModule } from "./home/app.module";
 import { ForumsAppModule } from "./forums/app.module";
@@ -21,7 +20,6 @@ import { AppComponent } from "./app.component"
         AppComponent,
     ],
     providers: [
-        ProgressBarService,
         MetaService,
     ],
     imports: [

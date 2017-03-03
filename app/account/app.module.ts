@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MaterialModule } from "@angular/material";
 import { UniversalModule } from "angular2-universal";
 import { NgSemanticModule } from "ng-semantic";
 
@@ -14,7 +13,6 @@ import { SignInComponent } from "./sign-in.component";
 @NgModule({
     imports: [
         UniversalModule,
-        MaterialModule.forRoot(),
         NgSemanticModule,
         AccountRoutingModule,
         AccountManagerModule,

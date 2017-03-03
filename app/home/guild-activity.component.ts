@@ -1,4 +1,5 @@
 import { Component, AfterContentChecked, AfterContentInit, OnInit } from "@angular/core";
+import "rxjs/add/operator/finally";
 
 import { AuthService } from "../core/auth.service";
 

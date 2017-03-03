@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Http, RequestOptionsArgs, Response } from "@angular/http";
 import { AuthHttp, JwtHelper, tokenNotExpired } from "angular2-jwt";
+import "rxjs/add/operator/share";
+import "rxjs/add/operator/do";
 
 const TOKEN_KEY = "id_token";
 

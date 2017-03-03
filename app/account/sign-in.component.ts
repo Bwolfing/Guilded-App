@@ -4,7 +4,6 @@ import { Router } from "@angular/router";
 import { CustomValidators } from "ng2-validation";
 
 import { AuthService, SignInModel } from "../core/auth.service";
-import { ProgressBarService } from "../core/progress-bar.service";
 
 @Component({
     selector: "account-sign-in",
@@ -27,7 +26,6 @@ export class SignInComponent implements OnInit
 
     constructor(private authService: AuthService,
         private router: Router,
-        private progressBar: ProgressBarService,
         private formBuilder: FormBuilder)
     {
     }
@@ -86,13 +84,11 @@ export class SignInComponent implements OnInit
         if (!this.isLoading)
         {
             this.isLoading = true;
-            this.progressBar.start();
             this.formErrors.clearErrors();
             this.authService.logIn(this.signInModel)
                 .finally(() => 
                 {
                     this.isLoading = false;
-                    this.progressBar.complete();
                 })
                 .subscribe(
                     result => this.router.navigate(["/home"]),

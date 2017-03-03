@@ -5,21 +5,6 @@ html
     overflow: hidden;
 }
 
-.loading-bar
-{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 9999;
-
-    &[mode="determinate"][aria-valuenow="0"]
-    {
-        display: none;
-    }
-}
-
 $menu-width: 200px;
 
 .main.menu
