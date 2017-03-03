@@ -99,10 +99,12 @@ app
     {
         flex: 1 1 auto;
         background: #fff;
-        padding: 15px 0 15px 10px;
+        margin: 0 18px;
+        padding: 15px 10px;
 
         @media(max-width: $mobile-breakpoint)
         {
+            margin: 0 10px;
             padding-top: 59px;
         }
     }

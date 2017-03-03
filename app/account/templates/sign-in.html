@@ -1,54 +1,57 @@
 <h2>
     Sign in
 </h2>
-<div class="padded col-xs-12 col-sm-6 col-md-6 col-lg-6">
-    <sm-loader class="inverted" [complete]="!isLoading" text="Signing in..."></sm-loader>
-    <h4>
-        Sign in using a local account
-    </h4>
-    <hr />
-    <form (ngSubmit)="logIn()" class="ui form" [ngClass]="{ 'error': !isFormErrorFree }" [formGroup]="signInForm">
-        <div class="field" *ngIf="formErrors.Model && formErrors.Model.length">
-            <div class="ui error message">
-                <ul class="list">
-                    <li *ngFor="let error of formErrors.Model">
-                        {{ error }}
-                    </li>
-                </ul>
+<sm-loader class="inverted" [complete]="!isLoading" text="Signing in..."></sm-loader>
+<div class="ui grid stackable divided two column">
+    <div class="column">
+        <h4>
+            Sign in using a local account
+        </h4>
+        <form (ngSubmit)="logIn()" class="ui form" [ngClass]="{ 'error': !isFormErrorFree }" [formGroup]="signInForm">
+            <div class="field" *ngIf="formErrors.Model && formErrors.Model.length">
+                <div class="ui error message">
+                    <ul class="list">
+                        <li *ngFor="let error of formErrors.Model">
+                            {{ error }}
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="field">
-            <sm-input label="E-mail*" class="left" [control]="signInForm.controls.Email" required icon="mail"></sm-input>
-            <div class="ui pointing warning basic label" *ngIf="formErrors.Email && formErrors.Email.length">
-                <ul>
-                    <li *ngFor="let error of formErrors.Email">
-                        {{ error }}
-                    </li>
-                </ul>
+            <div class="field">
+                <sm-input label="E-mail*" class="left" [control]="signInForm.controls.Email" required icon="mail"></sm-input>
+                <div class="ui pointing warning basic label" *ngIf="formErrors.Email && formErrors.Email.length">
+                    <ul>
+                        <li *ngFor="let error of formErrors.Email">
+                            {{ error }}
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="field">
-            <sm-input label="Password*" class="left" type="password" [control]="signInForm.controls.Password" required icon="asterisk"></sm-input>
-            <div class="ui pointing warning basic label" *ngIf="formErrors.Password && formErrors.Password.length">
-                <ul>
-                    <li *ngFor="let error of formErrors.Password">
-                        {{ error }}
-                    </li>
-                </ul>
+            <div class="field">
+                <sm-input label="Password*" class="left" type="password" [control]="signInForm.controls.Password" required icon="asterisk"></sm-input>
+                <div class="ui pointing warning basic label" *ngIf="formErrors.Password && formErrors.Password.length">
+                    <ul>
+                        <li *ngFor="let error of formErrors.Password">
+                            {{ error }}
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="field">
-            <sm-checkbox label="Remember me?" [control]="signInForm.controls.RememberMe"></sm-checkbox>
-        </div>
-        <sm-button type="submit" class="primary" [disabled]="isLoading || !signInForm.valid">
-            Sign In
-        </sm-button>
-    </form>
+            <div class="field">
+                <sm-checkbox label="Remember me?" [control]="signInForm.controls.RememberMe"></sm-checkbox>
+            </div>
+            <sm-button type="submit" class="primary" [disabled]="isLoading || !signInForm.valid">
+                Sign In
+            </sm-button>
+        </form>
+    </div>
+    <div class="column">
+        <h4>
+            Sign in with another service
+        </h4>
+        Things like OAuth buttons
+    </div>
 </div>
 <div class="padded col-xs-12 col-sm-6 col-md-6 col-lg-6">
-    <h4>
-        Sign in with another service
-    </h4>
-    <hr />
-    Things like OAuth buttons
+    
 </div>
