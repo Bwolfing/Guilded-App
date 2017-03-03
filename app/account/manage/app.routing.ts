@@ -13,6 +13,11 @@ const ROUTES: Route[] = [
                 canActivateChild: [
                     ManagerGuard,
                 ],
+                data: {
+                    meta: {
+                        description: "Manage your account",
+                    }
+                },
                 children: [
                     {
                         path: "",
@@ -22,6 +27,11 @@ const ROUTES: Route[] = [
                     {
                         path: "home",
                         component: HomeComponent,
+                        data: {
+                            meta: {
+                                title: "Account Management - Selama Ashal'anore!",
+                            },
+                        },
                     },
                 ],
             },

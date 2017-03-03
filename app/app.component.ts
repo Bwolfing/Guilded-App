@@ -1,6 +1,7 @@
 import { Component, ViewChild, AfterViewChecked, ViewEncapsulation, AfterViewInit } from "@angular/core";
 import { MdProgressBar } from "@angular/material";
 import { Router, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from "@angular/router";
+import { MetaService } from "@nglibs/meta";
 import * as $ from "jquery";
 import { SemanticSidebarComponent } from "ng-semantic";
 
@@ -23,7 +24,8 @@ export class AppComponent implements AfterViewInit, AfterViewChecked
 
     constructor(private authService: AuthService,
         private router: Router,
-        private progressBarService: ProgressBarService)
+        private progressBarService: ProgressBarService,
+        private meta: MetaService)
     {
     }
 

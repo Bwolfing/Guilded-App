@@ -18,6 +18,12 @@ const ROUTES: Route[] = [
             {
                 path: "sign-in",
                 component: SignInComponent,
+                data: {
+                    meta: {
+                        title: "Sign In - Selama Ashal'anore!",
+                        description: "Sign in to your account",
+                    },
+                },
                 canActivate: [
                     SignInGuard,
                 ],
@@ -25,6 +31,12 @@ const ROUTES: Route[] = [
             {
                 path: "register",
                 component: RegisterComponent,
+                data: {
+                    meta: {
+                        title: "Register - Selama Ashal'anore!",
+                        description: "Join our ranks!",
+                    },
+                },
                 canActivate: [
                     SignInGuard,
                 ],

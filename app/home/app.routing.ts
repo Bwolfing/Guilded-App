@@ -7,6 +7,11 @@ import { HomeComponent } from "./home.component";
 const ROUTES: Route[] = [
     {
         path: "",
+        data: {
+            meta: {
+                description: "Justice for our people!",
+            },
+        },
         children: [
             {
                 path: "",
@@ -16,10 +21,20 @@ const ROUTES: Route[] = [
             {
                 path: "home",
                 component: HomeComponent,
+                data: {
+                    meta: {
+                        title: "Selama Ashal'anore!",
+                    },
+                },
             },
             {
                 path: "counter",
                 component: CounterComponent,
+                data: {
+                    meta: {
+                        title: "Counter - Selama Ashal'anore!",
+                    }
+                },
             },
         ],
     },

@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { UniversalModule } from "angular2-universal";
+import { MetaModule, MetaService } from "@nglibs/meta";
 import { NgSemanticModule } from "ng-semantic";
 
 import { AuthModule } from "./core/auth.module";
@@ -21,10 +22,12 @@ import { AppComponent } from "./app.component"
     ],
     providers: [
         ProgressBarService,
+        MetaService,
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
         RouterModule.forRoot([]),
+        MetaModule.forRoot(),
         NgSemanticModule,
         AuthModule,
         HomeAppModule,

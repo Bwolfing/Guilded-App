@@ -6,6 +6,7 @@ import { HomeComponent } from "./home.component";
 const ROUTES: Route[] = [
     {
         path: "forums",
+        
         children: [
             {
                 path: "",
@@ -15,6 +16,12 @@ const ROUTES: Route[] = [
             {
                 path: "home",
                 component: HomeComponent,
+                data: {
+                    meta: {
+                        title: "Forums - Selama Ashal'anore!",
+                        description: "Guild member created content and discussion",
+                    },
+                },
             },
             {
                 path: "**",
