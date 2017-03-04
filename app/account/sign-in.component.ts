@@ -15,9 +15,21 @@ import { AuthService, SignInModel } from "../core/auth.service";
 export class SignInComponent implements OnInit
 {
     signInForm: FormGroup;
-    signInModel: SignInModel = new SignInModel();
     isLoading: boolean = false;
     formErrors: SignInErrors = new SignInErrors();
+
+    public get signInModel(): SignInModel
+    {
+        if (!this.signInForm)
+        {
+            return ;
+        }
+        return {
+            Email: this.signInForm.controls.Email.value,
+            Password: this.signInForm.controls.Password.value,
+            RememberMe: this.signInForm.controls.RememberMe.value,
+        };
+    }
 
     public get isFormErrorFree()
     {
@@ -40,16 +52,16 @@ export class SignInComponent implements OnInit
     {
         this.signInForm = this.formBuilder.group({
             Email: [
-                this.signInModel.Email, [
+                "", [
                     Validators.required,
                     CustomValidators.email,
                 ]
             ],
             Password: [
-                this.signInModel.Password,
+                "",
                 Validators.required,
             ],
-            RememberMe: [this.signInModel.RememberMe],
+            RememberMe: [false],
         });
     }
     private onFormValueChanges(data?: any)

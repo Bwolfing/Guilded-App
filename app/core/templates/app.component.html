@@ -46,6 +46,9 @@
         <a sm-item *ngIf="!isSignedIn" [routerLinkActive]="['active']" [routerLink]="['/account/register']">
             <span class="fa fa-pencil-square-o"></span> Register
         </a>
+        <a sm-item *ngIf="isSignedIn" [routerLinkActive]="['active']" [routerLink]="['account', 'manage']">
+            <span class="fa fa-user"></span> Account Management
+        </a>
         <a sm-item *ngIf="isSignedIn" (click)="signOut()">
             <span class="fa fa-sign-out"></span> Sign out
         </a>

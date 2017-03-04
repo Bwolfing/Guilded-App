@@ -15,9 +15,22 @@ import { AuthService, RegisterUserModel } from "../core/auth.service";
 export class RegisterComponent implements OnInit
 {
     registerForm: FormGroup;
-    user: RegisterUserModel = new RegisterUserModel();
     formErrors: RegisterErrors = new RegisterErrors();
     isLoading: boolean = false;
+
+    public get registerModel(): RegisterUserModel
+    {
+        if (!this.registerForm)
+        {
+            return null;
+        }
+        return {
+            ConfirmPassword: this.registerForm.controls.ConfirmPassword.value,
+            Password: this.registerForm.controls.Password.value,
+            Email: this.registerForm.controls.Email.value,
+            Username: this.registerForm.controls.Username.value,
+        };
+    }
 
     public get isFormErrorFree(): boolean
     {
@@ -40,19 +53,19 @@ export class RegisterComponent implements OnInit
     {
         this.registerForm = this.formBuilder.group({
             Username: [
-                this.user.Username, [
+                "", [
                     Validators.required,
                     Validators.minLength(5),
                 ],
             ],
             Email: [
-                this.user.Email, [
+                "", [
                     Validators.required,
                     CustomValidators.email
                 ],
             ],
             Password: [
-                this.user.Password, [
+                "", [
                     Validators.required,
                     Validators.minLength(6),
                 ]
@@ -101,7 +114,7 @@ export class RegisterComponent implements OnInit
         {
             this.isLoading = true;
             this.formErrors.clearErrors();
-            this.authService.register(this.user)
+            this.authService.register(this.registerModel)
                 .finally(() =>
                 {
                     this.isLoading = false;
