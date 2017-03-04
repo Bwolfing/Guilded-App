@@ -23,6 +23,7 @@ module.exports = {
             { test: /\.scss$/, exclude: /node_modules/, loaders: ["raw-loader", "sass-loader"], },
         ],
     },
+    devtool: isDevBuild ? "inline-source-map" : null,
     plugins: [
         new webpack.DllReferencePlugin({
             context: __dirname,
