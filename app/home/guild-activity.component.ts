@@ -35,7 +35,7 @@ export class GuildActivityComponent implements OnInit
             this.isLoading = true;
             if (!this.isLoggedIn)
             {
-                this.authService.get(`/api/guild-activity?page=${this.page}`)
+                this.authService.get(`/guild-activity?page=${this.page}`)
                     .finally(() => this.isLoading = false)
                     .subscribe(result =>
                     {
