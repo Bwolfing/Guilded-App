@@ -9,13 +9,13 @@
         <a sm-item [routerLinkActive]="['active']" [routerLink]="['/forums']">
             <span class="fa fa-comment"></span> Forums
         </a>
-        <a sm-item *ngIf="!isLoggedIn" [routerLinkActive]="['active']" [routerLink]="['/account/sign-in']">
+        <a sm-item *ngIf="!isSignedIn" [routerLinkActive]="['active']" [routerLink]="['/account/sign-in']">
             <span class="fa fa-sign-in"></span> Sign in
         </a>
-        <a sm-item *ngIf="!isLoggedIn" [routerLinkActive]="['active']" [routerLink]="['/account/register']">
+        <a sm-item *ngIf="!isSignedIn" [routerLinkActive]="['active']" [routerLink]="['/account/register']">
             <span class="fa fa-pencil-square-o"></span> Register
         </a>
-        <a sm-item *ngIf="isLoggedIn" (click)="logOut()">
+        <a sm-item *ngIf="isSignedIn" (click)="signOut()">
             <span class="fa fa-sign-out"></span> Sign out
         </a>
     </sm-sidebar>
@@ -40,13 +40,13 @@
         <a sm-item [routerLinkActive]="['active']" [routerLink]="['/forums']">
             <span class="fa fa-comment"></span> Forums
         </a>
-        <a sm-item *ngIf="!isLoggedIn" [routerLinkActive]="['active']" [routerLink]="['/account/sign-in']">
+        <a sm-item *ngIf="!isSignedIn" [routerLinkActive]="['active']" [routerLink]="['/account/sign-in']">
             <span class="fa fa-sign-in"></span> Sign in
         </a>
-        <a sm-item *ngIf="!isLoggedIn" [routerLinkActive]="['active']" [routerLink]="['/account/register']">
+        <a sm-item *ngIf="!isSignedIn" [routerLinkActive]="['active']" [routerLink]="['/account/register']">
             <span class="fa fa-pencil-square-o"></span> Register
         </a>
-        <a sm-item *ngIf="isLoggedIn" (click)="logOut()">
+        <a sm-item *ngIf="isSignedIn" (click)="signOut()">
             <span class="fa fa-sign-out"></span> Sign out
         </a>
     </sm-menu>

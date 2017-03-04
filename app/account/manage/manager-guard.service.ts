@@ -12,7 +12,7 @@ export class ManagerGuard implements CanActivateChild
 
     public canActivateChild()
     {
-        let isLoggedIn = this.authService.isLoggedIn;
+        let isLoggedIn = this.authService.isSignedIn;
         if (!isLoggedIn)
         {
             this.router.navigate(["/account/sign-in"]);

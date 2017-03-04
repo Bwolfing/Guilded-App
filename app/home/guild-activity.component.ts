@@ -56,7 +56,7 @@ export class GuildActivityComponent implements OnInit
 
     public get isLoggedIn(): boolean
     {
-        return this.authService.isLoggedIn;
+        return this.authService.isSignedIn;
     }
 
     public refreshLinks(): void

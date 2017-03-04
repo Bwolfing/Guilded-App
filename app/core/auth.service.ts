@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Http, RequestOptionsArgs, Response } from "@angular/http";
+import { ConfigService } from "@nglibs/config";
 import { AuthHttp, JwtHelper, tokenNotExpired } from "angular2-jwt";
 import "rxjs/add/operator/share";
 import "rxjs/add/operator/do";
@@ -23,18 +24,22 @@ export class SignInModel
 @Injectable()
 export class AuthService
 {
-    private logInUrl: string = "/api/account/sign-in";
-    private logOutUrl: string = "/api/account/sign-out";
-    private registerUrl: string = "/api/account/register";
+    private readonly apiUrl: string;
+    private signInEndpoint: string = "/account/sign-in";
+    private signOutEndpoint: string = "/account/sign-out";
+    private registerEndpoint: string = "/account/register";
     private jwtHelper: JwtHelper = new JwtHelper();
 
-    constructor(private http: Http, private authHttp: AuthHttp)
+    constructor(private http: Http,
+        private authHttp: AuthHttp,
+        private config: ConfigService)
     {
+        this.apiUrl = this.config.getSettings("apiUrl");
     }
 
-    public logIn(user: SignInModel)
+    public signIn(user: SignInModel)
     {
-        let logInObservable = this.http.post(this.logInUrl, user).share();
+        let logInObservable = this.post(this.signInEndpoint, user);
         return logInObservable.do(result => this.storeAccessToken(result), err => console.error(err));
     }
     private storeAccessToken(result: Response)
@@ -45,50 +50,57 @@ export class AuthService
 
     public register(user: RegisterUserModel)
     {
-        let registerObservable = this.http.post(this.registerUrl, user).share();
+        let registerObservable = this.post(this.registerEndpoint, user);
         return registerObservable.do(result => this.storeAccessToken(result), err => console.error(err));
     }
 
-    public logOut()
+    public signOut()
     {
-        if (!this.isLoggedIn)
+        if (!this.isSignedIn)
         {
             return null;
         }
-        let logOutObservable = this.authHttp.post(this.logOutUrl, {}).share();
-        return logOutObservable.do(result =>
-        {
-            localStorage.removeItem(TOKEN_KEY);    
-        });
+        let signOutObservable = this.post(this.signOutEndpoint, {});
+        return signOutObservable.do(result => localStorage.removeItem(TOKEN_KEY), err => console.error(err));    
     }
 
-    public get isLoggedIn(): boolean
+    public get isSignedIn(): boolean
     {
         return tokenNotExpired();
     }
 
-    public get(url: string, options?: RequestOptionsArgs)
+    public get(endpoint: string, options?: RequestOptionsArgs)
     {
-        if (this.isLoggedIn)
+        const endpointUrl = this.apiUrl + this.ensureEndpointLeadingSlash(endpoint);
+        if (this.isSignedIn)
         {
-            return this.authHttp.get(url, options).share();
+            return this.authHttp.get(endpointUrl, options).share();
         }
         else
         {
-            return this.http.get(url, options).share();
+            return this.http.get(endpointUrl, options).share();
         }
     }
 
-    public post(url: string, body: any, options?: RequestOptionsArgs)
+    public post(endpoint: string, body: any, options?: RequestOptionsArgs)
     {
-        if (this.isLoggedIn)
+        const endpointUrl = this.apiUrl + this.ensureEndpointLeadingSlash(endpoint);
+        if (this.isSignedIn)
         {
-            return this.authHttp.post(url, body, options).share();
+            return this.authHttp.post(endpointUrl, body, options).share();
         }
         else
         {
-            return this.http.post(url, body, options).share();
+            return this.http.post(endpointUrl, body, options).share();
         }
+    }
+    private ensureEndpointLeadingSlash(url: string): string
+    {
+        if (!url.startsWith("/"))
+        {
+            return "/" + url;
+        }
+        return url;
     }
 }
 

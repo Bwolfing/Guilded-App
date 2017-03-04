@@ -28,16 +28,16 @@ export class AppComponent implements AfterViewInit
         $(".sidebar.menu .item").on("click", () => this.sidebar.hide());
     }
 
-    public get isLoggedIn(): boolean
+    public get isSignedIn(): boolean
     {
-        return this.authService.isLoggedIn;
+        return this.authService.isSignedIn;
     }
 
-    public logOut(): void
+    public signOut(): void
     {
-        if (this.isLoggedIn)
+        if (this.isSignedIn)
         {
-            this.authService.logOut()
+            this.authService.signOut()
                 .subscribe(result => this.router.navigate(["/home"]));
         }
     }

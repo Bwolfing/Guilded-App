@@ -35,6 +35,7 @@ module.exports = {
             "@angular/platform-browser",
             "@angular/platform-browser-dynamic",
             "@angular/router",
+            "@nglibs/config",
             "@nglibs/meta",
             "angular2-jwt",
             "angular2-universal",

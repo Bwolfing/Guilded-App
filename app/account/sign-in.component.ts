@@ -85,7 +85,7 @@ export class SignInComponent implements OnInit
         {
             this.isLoading = true;
             this.formErrors.clearErrors();
-            this.authService.logIn(this.signInModel)
+            this.authService.signIn(this.signInModel)
                 .finally(() => 
                 {
                     this.isLoading = false;

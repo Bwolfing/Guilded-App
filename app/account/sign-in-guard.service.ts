@@ -12,7 +12,7 @@ export class SignInGuard implements CanActivate
 
     public canActivate()
     {
-        let isLoggedIn = this.authService.isLoggedIn;
+        let isLoggedIn = this.authService.isSignedIn;
         if (isLoggedIn)
         {
             this.router.navigate(["/home"]);
