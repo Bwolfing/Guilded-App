@@ -18,6 +18,8 @@ $menu-width: 200px;
         }
         &.visible
         {
+            overflow: visible !important;
+
             &.left.ui ~ .pusher
             {
                 -webkit-transform: translate3d($menu-width, 0, 0);

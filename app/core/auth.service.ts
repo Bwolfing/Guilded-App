@@ -21,6 +21,10 @@ export class SignInModel
     RememberMe: boolean = false;
 }
 
+const CLAIM_TYPES = {
+    Username: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+};
+
 @Injectable()
 export class AuthService
 {
@@ -102,6 +106,23 @@ export class AuthService
         }
         return url;
     }
+
+    public get currentUser(): AppUser
+    {
+        let storedJwt = localStorage.getItem(TOKEN_KEY);
+        if (storedJwt)
+        {
+            let decoded = this.jwtHelper.decodeToken(storedJwt);
+            return {
+                Username: decoded[CLAIM_TYPES.Username],
+            }
+        }
+        return null;
+    }
+}
+export interface AppUser
+{
+    Username: string;
 }
 
 interface AccessToken

@@ -15,9 +15,14 @@
         <a sm-item *ngIf="!isSignedIn" [routerLinkActive]="['active']" [routerLink]="['/account/register']">
             <span class="fa fa-pencil-square-o"></span> Register
         </a>
-        <a sm-item *ngIf="isSignedIn" (click)="signOut()">
-            <span class="fa fa-sign-out"></span> Sign out
-        </a>
+        <sm-dropdown *ngIf="isSignedIn" class="left pointing" title="Hello, {{ currentUser.Username }}" [options]="{ 'action': 'hide' }">
+            <sm-item [routerLinkActive]="['active']" [routerLink]="['account', 'manage']">
+                <span class="fa fa-user"></span> Account management
+            </sm-item>
+            <sm-item (click)="signOut()">
+                <span class="fa fa-sign-out"></span> Sign out
+            </sm-item>
+        </sm-dropdown>
     </sm-sidebar>
     <sm-menu class="inverted fixed top large mobile-menu">
         <a sm-item (click)="sidebar.show({ 'transition': 'overlay' })">
@@ -46,12 +51,14 @@
         <a sm-item *ngIf="!isSignedIn" [routerLinkActive]="['active']" [routerLink]="['/account/register']">
             <span class="fa fa-pencil-square-o"></span> Register
         </a>
-        <a sm-item *ngIf="isSignedIn" [routerLinkActive]="['active']" [routerLink]="['account', 'manage']">
-            <span class="fa fa-user"></span> Account Management
-        </a>
-        <a sm-item *ngIf="isSignedIn" (click)="signOut()">
-            <span class="fa fa-sign-out"></span> Sign out
-        </a>
+        <sm-dropdown *ngIf="isSignedIn" class="left pointing" title="Hello, {{ currentUser.Username }}" [options]="{ 'action': 'hide' }">
+            <sm-item [routerLinkActive]="['active']" [routerLink]="['account', 'manage']">
+                <span class="fa fa-user"></span> Account management
+            </sm-item>
+            <sm-item (click)="signOut()">
+                <span class="fa fa-sign-out"></span> Sign out
+            </sm-item>
+        </sm-dropdown>
     </sm-menu>
     <div class="main-content">
         <div class="ui container fluid">

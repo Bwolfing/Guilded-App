@@ -2,7 +2,7 @@ import { Component, ViewChild, ViewEncapsulation, AfterViewInit } from "@angular
 import { Router, NavigationStart, NavigationCancel, NavigationEnd, NavigationError } from "@angular/router";
 import { MetaService } from "@nglibs/meta";
 import * as $ from "jquery";
-import { SemanticSidebarComponent } from "ng-semantic";
+import { SemanticSidebarComponent, SemanticDropdownComponent } from "ng-semantic";
 
 import { AuthService } from "./core/auth.service";
 
@@ -17,6 +17,11 @@ export class AppComponent implements AfterViewInit
     @ViewChild(SemanticSidebarComponent)
     sidebar: SemanticSidebarComponent;
 
+    public get currentUser()
+    {
+        return this.authService.currentUser;
+    }
+
     constructor(private authService: AuthService,
         private router: Router,
         private meta: MetaService)
@@ -25,7 +30,7 @@ export class AppComponent implements AfterViewInit
 
     ngAfterViewInit()
     {
-        $(".sidebar.menu .item").on("click", () => this.sidebar.hide());
+        $(".sidebar.menu .item:not(.dropdown)").on("click", () => this.sidebar.hide());
     }
 
     public get isSignedIn(): boolean

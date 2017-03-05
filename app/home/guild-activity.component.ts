@@ -45,7 +45,7 @@ export class GuildActivityComponent implements OnInit
             }
             else
             {
-                this.authService.get("/api/guild-activity/test")
+                this.authService.get("/guild-activity/test")
                     .finally(() => this.isLoading = false)
                     .subscribe(result =>
                         console.log(result)
