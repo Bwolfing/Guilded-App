@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Route, RouterModule } from "@angular/router";
 
-import { CounterComponent } from "./counter.component";
 import { HomeComponent } from "./home.component";
 
 const ROUTES: Route[] = [
@@ -25,15 +24,6 @@ const ROUTES: Route[] = [
                     meta: {
                         title: "Selama Ashal'anore!",
                     },
-                },
-            },
-            {
-                path: "counter",
-                component: CounterComponent,
-                data: {
-                    meta: {
-                        title: "Counter - Selama Ashal'anore!",
-                    }
                 },
             },
         ],
