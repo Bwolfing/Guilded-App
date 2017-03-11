@@ -27,6 +27,6 @@ import { SignInComponent } from "./sign-in.component";
         SignInGuard,
     ],
 })
-export class AccountModule
+export class AccountAppModule
 {
 }

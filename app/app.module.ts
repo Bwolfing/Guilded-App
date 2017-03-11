@@ -10,7 +10,8 @@ import { AuthModule } from "./core/auth.module";
 
 import { HomeAppModule } from "./home/app.module";
 import { ForumsAppModule } from "./forums/app.module";
-import { AccountModule } from "./account/app.module";
+import { AccountAppModule } from "./account/app.module";
+import { ManagerAppModule } from "./manager/app.module";
 
 import { AppComponent } from "./app.component"
 
@@ -44,7 +45,8 @@ function configFactory(http: Http): ConfigLoader
         AuthModule,
         HomeAppModule,
         ForumsAppModule,
-        AccountModule,
+        AccountAppModule,
+        ManagerAppModule
     ]
 })
 export class AppModule {
