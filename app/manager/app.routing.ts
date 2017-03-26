@@ -5,7 +5,7 @@ import { RolesComponent } from "./roles.component";
 
 const ROUTES: Route[] = [
     {
-        path: "manager",
+        path: "admin",
         data: {
             meta: {
                 description: "Justice for our people!",

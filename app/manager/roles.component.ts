@@ -2,13 +2,18 @@ import { Component, OnInit } from "@angular/core";
 
 import { AuthService } from "../core/auth.service";
 
+import { IApplicationRole } from "./models/IApplicationRole";
+
 @Component({
     selector: "role-manager",
     template: require("./templates/roles.component.html"),
+    styles: [
+        require("./templates/roles.component.scss"),
+    ],
 })
 export class RolesComponent implements OnInit
 {
-    privileges: RolePrivileges[] = [];
+    roles: IApplicationRole[] = [];
 
     constructor(private authHttp: AuthService)
     {
@@ -16,17 +21,11 @@ export class RolesComponent implements OnInit
 
     public ngOnInit()
     {
-        this.authHttp.get("/manager/privileges")
+        this.authHttp.get("/admin/roles")
             .map(res => res.json())
             .subscribe(
-                result => this.privileges = result as RolePrivileges[],
+                result => this.roles = result as IApplicationRole[],
                 err => console.error(err)
             );
     }
-}
-
-interface RolePrivileges
-{
-    id: number;
-    name: string;
 }

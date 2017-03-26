@@ -1,10 +1,22 @@
 <div>
     Role management
 </div>
-<div>
-    <ul>
-        <li *ngFor="let privilege of privileges">
-            {{ privilege | json }}
-        </li>
-    </ul>
+<div class="ui relaxed divided selection list">
+    <div class="item role" *ngFor="let role of roles">
+        <div class="content">
+            {{ role.name }}
+        </div>
+        <div class="description">
+            <div class="ui relaxed list">
+                <div class="item" *ngFor="let permission of role.permissions">
+                    <div class="content">
+                        {{ permission.permissionType }}
+                    </div>
+                    <div class="description">
+                        {{ permission.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
