@@ -5,6 +5,7 @@ import { NgSemanticModule } from "ng-semantic";
 import { RoutingModule } from "./app.routing";
 
 import { RolesComponent } from "./roles.component";
+import { RoleEditorComponent } from "./role-editor.component";
 
 @NgModule({
     imports: [
@@ -14,8 +15,9 @@ import { RolesComponent } from "./roles.component";
     ],
     declarations: [
         RolesComponent,
+        RoleEditorComponent,
     ],
 })
-export class ManagerAppModule
+export class AdminModule
 {
 }

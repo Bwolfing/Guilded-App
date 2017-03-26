@@ -1,0 +1,18 @@
+<div>
+    <sm-loader [complete]="!isLoading" text="Loading..."></sm-loader>
+    <div>
+        <div>
+            {{ currentRole.id }}
+        </div>
+        <div>
+            {{ currentRole.name }}
+        </div>
+        <ul>
+            <li *ngFor="let permission of permissions">
+                {{ permission.permissionType }}
+                <br />
+                {{ permission.description }}
+            </li>
+        </ul>
+    </div>
+</div>

@@ -2,7 +2,7 @@
     Role management
 </div>
 <div class="ui relaxed divided selection list">
-    <div class="item role" *ngFor="let role of roles">
+    <a class="item role" *ngFor="let role of roles" [routerLink]="['edit', role.id]">
         <div class="content">
             {{ role.name }}
         </div>
@@ -18,5 +18,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </a>
 </div>
+<router-outlet></router-outlet>
