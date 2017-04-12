@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Params, Router } from "@angular/router";
+import "rxjs/add/operator/switchMap"
 
 import { AuthService } from "../core/auth.service";
 
@@ -14,24 +16,23 @@ export class RoleEditorComponent implements OnInit
     isLoading: boolean = true;
     currentRole: IApplicationRole = { id: null, name: null, permissions: new Array<IPermission>(), };
 
-    constructor(private authHttp: AuthService)
+    constructor(
+        private authHttp: AuthService,
+        private route: ActivatedRoute,
+        private router: Router
+    )
     {
     }
 
     public ngOnInit()
     {
         this.isLoading = true;
-        this.authHttp.get("/admin/roles/1")
+        this.route.params
+            .switchMap((params: Params) => this.authHttp.get(`/admin/roles/${params['id']}`))
             .map(res => res.json())
-            .finally(() => this.isLoading = false)
-            .subscribe(
-                result => {
-                    if (result !== null)
-                    {
-                        this.currentRole = result as IApplicationRole
-                    }
-                },
-                err => console.error(err)
-            );
+            .subscribe((result: IApplicationRole) => {
+                debugger;
+                this.currentRole = result;
+            });
     }
 }

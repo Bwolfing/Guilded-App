@@ -4,5 +4,6 @@ export interface IApplicationRole
 {
     id: string;
     name: string;
+    concurrencyStamp: string;
     permissions: IPermission[];
 }
