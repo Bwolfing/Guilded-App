@@ -1,5 +1,10 @@
 <div>
-    <sm-loader [complete]="!isLoading" text="Loading..."></sm-loader>
+    <sm-loader [complete]="!isLoading" class="inverted" text="Loading..."></sm-loader>
+    <form (ngSubmit)="submitForm()" class="ui form" [formGroup]="roleEditorForm">
+        <input type="hidden" [formControl]="roleEditorForm.controls.id" />
+        <input type="hidden" [formControl]="roleEditorForm.controls.concurrencyStamp" />
+        <sm-input label="Name*" class="left" [control]="roleEditorForm.controls.name" type="text" required></sm-input>
+    </form>
     <div>
         <div>
             {{ currentRole.id }}
@@ -8,7 +13,7 @@
             {{ currentRole.name }}
         </div>
         <ul>
-            <li *ngFor="let permission of permissions">
+            <li *ngFor="let permission of currentRole.permissions">
                 {{ permission.permissionType }}
                 <br />
                 {{ permission.description }}

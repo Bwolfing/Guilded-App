@@ -85,6 +85,27 @@ export class AuthService
             return this.http.get(endpointUrl, options).share();
         }
     }
+    private ensureEndpointLeadingSlash(url: string): string
+    {
+        if (!url.startsWith("/"))
+        {
+            return "/" + url;
+        }
+        return url;
+    }
+
+    public delete(endpoint: string, options?: RequestOptionsArgs)
+    {
+        const endpointUrl = this.apiUrl + this.ensureEndpointLeadingSlash(endpoint);
+        if (this.isSignedIn)
+        {
+            return this.authHttp.delete(endpointUrl).share();
+        }
+        else
+        {
+            return this.http.delete(endpointUrl).share
+        }
+    }
 
     public post(endpoint: string, body: any, options?: RequestOptionsArgs)
     {
@@ -97,14 +118,6 @@ export class AuthService
         {
             return this.http.post(endpointUrl, body, options).share();
         }
-    }
-    private ensureEndpointLeadingSlash(url: string): string
-    {
-        if (!url.startsWith("/"))
-        {
-            return "/" + url;
-        }
-        return url;
     }
 
     public get currentUser(): AppUser

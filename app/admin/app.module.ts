@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { UniversalModule } from "angular2-universal";
 import { NgSemanticModule } from "ng-semantic";
 
@@ -12,6 +13,8 @@ import { RoleEditorComponent } from "./role-editor.component";
         UniversalModule,
         NgSemanticModule,
         RoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     declarations: [
         RolesComponent,
